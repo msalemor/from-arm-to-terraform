@@ -133,18 +133,24 @@ StorageAccountCount=3
 
 ## Common
 
-- Parameters
-- Variables
+- Parameters in Arm/Variables in Terraform
 - Resources
 - Outputs
 - Templates/modules
 - Built-in functions
 
 
-## Unique to terraform
+## Terraform concepts
 
-- Providers: interact with remote systems. Each provider adds a set of resource types and/or data sources that Terraform can manage.
-- State:
+- Variables: Also used as input-variables, it is key-value pair used by Terraform modules to allow customization.
+- Provider: It is a plugin to interact with APIs of service and access its related resources.
+- Module: It is a folder with Terraform templates where all the configurations are defined
+- State: It consists of cached information about the infrastructure managed by Terraform and the related configurations.
+- Resources: It refers to a block of one or more infrastructure objects (compute instances, virtual networks, etc.), which are used in configuring and managing the infrastructure.
+- Data Source: It is implemented by providers to return information on external objects to terraform.
+- Output Values: These are return values of a terraform module that can be used by other configurations.
+- Plan: It is one of the stages where it determines what needs to be created, updated, or destroyed to move from real/current state of the infrastructure to the desired state.
+- Apply: It is one of the stages where it applies the changes real/current state of the infrastructure in order to move to the desired state.
 
 ## Terraform deployment phases
 
