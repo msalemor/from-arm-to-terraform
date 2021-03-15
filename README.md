@@ -77,31 +77,26 @@ variable "location" {
 variable "domain" {
   type        = string
   default     = "ecomp"
-  description = "The Azure Region to deploy resources."
 }
 
 variable "resourceGroupName" {
   type        = string
   default     = "rg-storage-dev-eus-01"
-  description = "The Azure Region to deploy resources."
 }
 
 variable "storageAccountName" {
   type        = string
   default     = "devopslab"
-  description = "The Azure Region to deploy resources."
 }
 
 variable "storageAccountType" {
   type        = string
   default     = "LRS"
-  description = "The Azure Region to deploy resources."
 }
 
 variable "StorageAccountCount" {
   type        = number
   default     = 2
-  description = "The Azure Region to deploy resources."
 }
 
 resource "azurerm_resource_group" "example" {
