@@ -65,7 +65,6 @@ terraform {
 provider "azurerm" { 
     # The "feature" block is required for AzureRM provider 2.x. 
     # If you are using version 1.x, the "features" block is not allowed.
-    version = "~>2.0"
     features {}
 }
 
@@ -95,12 +94,12 @@ variable "storageAccountName" {
 
 variable "storageAccountType" {
   type        = string
-  default     = "Standard_LRS"
+  default     = "LRS"
   description = "The Azure Region to deploy resources."
 }
 
 variable "StorageAccountCount" {
-  type        = int
+  type        = number
   default     = 2
   description = "The Azure Region to deploy resources."
 }
@@ -112,7 +111,7 @@ resource "azurerm_resource_group" "example" {
 
 resource "azurerm_storage_account" "example" {
   count                    = var.StorageAccountCount
-  name                     = lower("${var.domain}${var.storageAccountName}.${count.index}")
+  name                     = lower("${var.domain}${var.storageAccountName}${count.index}")
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
   account_tier             = "Standard"
@@ -144,12 +143,22 @@ resource "azurerm_storage_account" "example" {
 
 ### Init
 
+```bash
 terraform init
+```
 
 ### Plan
 
-terrform plan
+```bash
+terrform plan -out main.tfstate
+```
 
 ### Apply
 
-terraform apply
+```bash
+terraform apply main.tfstate
+```
+
+## Other Documentation
+
+- [Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
