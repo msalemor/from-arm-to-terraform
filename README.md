@@ -118,6 +118,11 @@ resource "azurerm_storage_account" "example" {
     environment = "staging"
   }
 }
+
+output "storageAccounts" {
+  count = var.StorageAccountCount
+  value = azurerm_storage_account.example[count.index].name
+}
 ```
 
 Variable file: main.tfvars
