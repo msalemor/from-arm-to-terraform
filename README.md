@@ -120,12 +120,11 @@ resource "azurerm_storage_account" "example" {
 }
 
 output "storageAccounts" {
-  count = var.StorageAccountCount
   value = [azurerm_storage_account.example.*.name]
 }
 ```
 
-Variable file: main.tfvars
+Variable file: dev.tfvars
 
 ```bash
 StorageAccountCount=3
@@ -165,13 +164,13 @@ terraform init
 ### Plan
 
 ```bash
-terrform plan
+terrform plan -var-file=dev.tfvars [-out=main.tfstate]
 ```
 
 ### Apply
 
 ```bash
-terraform apply
+terraform apply -var-file=dev.tfvars [main.tfstate]
 
 # Generates terraform.tfstate
 ```
