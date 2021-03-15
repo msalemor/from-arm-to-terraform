@@ -50,6 +50,8 @@
 
 ### Sample Terraform
 
+Main file: main.tf
+
 ```terraform
 # Store state in Azure storage
 terraform {
@@ -118,6 +120,11 @@ resource "azurerm_storage_account" "example" {
 }
 ```
 
+Variable file: main.tfvars
+
+```bash
+StorageAccountCount=3
+```
 
 ## Common
 
