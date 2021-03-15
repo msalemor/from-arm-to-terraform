@@ -179,6 +179,11 @@ terraform apply -var-file=dev.tfvars [main.tfstate]
 terraform destoy
 ```
 
+### Workspaces
+
+- [Workspaces](https://www.terraform.io/docs/language/state/workspaces.html)
+
+
 ## Reference
 
 - [Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
