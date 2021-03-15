@@ -150,13 +150,15 @@ terraform init
 ### Plan
 
 ```bash
-terrform plan -out main.tfstate
+terrform plan
 ```
 
 ### Apply
 
 ```bash
-terraform apply main.tfstate
+terraform apply
+
+# Generates terraform.tfstate
 ```
 
 ## Other Documentation
