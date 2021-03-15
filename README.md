@@ -184,6 +184,48 @@ terraform destoy
 - [Workspaces](https://www.terraform.io/docs/language/state/workspaces.html)
 
 
+## Terraform ADO yaml pipeline
+
+```yaml
+trigger:
+- master
+pool:
+  vmImage: 'ubuntu-latest'
+steps:
+- task: TerraformTaskV1@0
+  displayName: Terra Init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: $(System.DefaultWorkingDirectory)
+    backendServiceArm: 'ServiceConnectionName'
+    backendAzureRmResourceGroupName: 'common-services-miel'
+    backendAzureRmStorageAccountName: 'mielstorage001'
+    backendAzureRmContainerName: 'configman'
+    backendAzureRmKey: 'tf/terraform.tfstate'
+- task: TerraformTaskV1@0
+  displayName: Terra Destroy
+  inputs:
+    provider: 'azurerm'
+    command: 'destroy'
+    workingDirectory: $(System.DefaultWorkingDirectory)
+    environmentServiceNameAzureRM: 'ServiceConnectionName'
+- task: TerraformTaskV1@0
+  displayName: Terra Plan
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: $(System.DefaultWorkingDirectory)
+    environmentServiceNameAzureRM: 'ServiceConnectionName'
+- task: TerraformTaskV1@0
+  displayName: Terra Apply
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: $(System.DefaultWorkingDirectory)
+    environmentServiceNameAzureRM: 'ServiceConnectionName'
+```
+
 ## Reference
 
 - [Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
