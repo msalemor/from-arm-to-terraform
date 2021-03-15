@@ -121,7 +121,7 @@ resource "azurerm_storage_account" "example" {
 
 output "storageAccounts" {
   count = var.StorageAccountCount
-  value = azurerm_storage_account.example[count.index].name
+  value = [azurerm_storage_account.example.*.name]
 }
 ```
 
