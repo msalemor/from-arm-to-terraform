@@ -152,6 +152,8 @@ StorageAccountCount=3
 - Plan: It is one of the stages where it determines what needs to be created, updated, or destroyed to move from real/current state of the infrastructure to the desired state.
 - Apply: It is one of the stages where it applies the changes real/current state of the infrastructure in order to move to the desired state.
 
+> Note: Please see references below
+
 ## Terraform deployment phases
 
 ### Init
