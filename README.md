@@ -186,6 +186,46 @@ terraform destoy
 
 ## Terraform ADO yaml pipeline
 
+```terraform
+# this line is imported so that backend connection is extablished in 
+the pipeline
+terraform {
+    backend "azurerm" {}
+}
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+    subscription_id = "74d6a1ea-aaaa-bbbb-cccc-28b098c3435f"
+    skip_provider_registration = "true"
+    features {}
+}
+resource "azurerm_app_service_plan" "test" {
+  name                = "azure-functions-test-service-plan"
+  location            = "westeurope"
+  resource_group_name = "resource_group_name"
+  kind                = "FunctionApp"
+  sku {
+    tier = "Dynamic"
+    size = "Y1"
+  }
+}
+resource "azurerm_application_insights" "test" {
+  name                = "miel-test-terraform-insights"
+  location            = "westeurope"
+  resource_group_name = "resource_group_name"
+  application_type    = "web"
+}
+resource "azurerm_function_app" "test" {
+  name                      = "miel-test-terraform"
+  location                  = "westeurope"
+  resource_group_name       = "resource_group_name"
+  app_service_plan_id       = azurerm_app_service_plan.test.id
+  storage_connection_string = "storage_connection_string"
+  app_settings = {
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.test.instrumentation_key
+  }
+}
+```
+
 ```yaml
 trigger:
 - master
@@ -229,3 +269,4 @@ steps:
 ## Reference
 
 - [Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
+- [ADO Terraform sample](https://mthai.medium.com/how-to-run-terraform-tasks-in-azure-devops-273935089536)
