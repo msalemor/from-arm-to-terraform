@@ -131,7 +131,7 @@ Variable file: main.tfvars
 StorageAccountCount=3
 ```
 
-## Common
+## ARM and Terraform concepts
 
 - Parameters in Arm/Variables in Terraform
 - Resources
