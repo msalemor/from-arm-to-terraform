@@ -180,6 +180,6 @@ terraform apply
 terraform destoy
 ```
 
-## Other Documentation
+## Reference
 
 - [Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
