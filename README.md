@@ -163,6 +163,12 @@ terraform apply
 # Generates terraform.tfstate
 ```
 
+### Destoy
+
+```bash
+terraform destoy
+```
+
 ## Other Documentation
 
 - [Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
