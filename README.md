@@ -61,12 +61,6 @@ terraform {
   }
 }
 
-variable "location" {
-  type        = string
-  default     = "eastus"
-  description = "The Azure Region to deploy resources."
-}
-
 # Configure the Azure provider
 provider "azurerm" { 
     # The "feature" block is required for AzureRM provider 2.x. 
