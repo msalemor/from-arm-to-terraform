@@ -1,5 +1,4 @@
 # From ARM Templates To Terraform
-## A guide for ARM template developers
 
 ## Sample code
 
