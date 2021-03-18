@@ -51,12 +51,27 @@
 
 Main file: main.tf
 
+```bash
+az group create \
+    --name rg-tfstate-eus-dev \
+    --location eastus
+    
+az storage account create \
+    --name mydomaintfstate \
+    --resource-group storage-resource-group \
+    --location eastus \
+    --sku Standard_LRS \
+    --kind StorageV2    
+    
+az storage container create -n mydomaintfstate    
+```
+
 ```terraform
 # Store state in Azure storage
 terraform {
   backend "azurerm" {
-    resource_group_name   = "tstate"
-    storage_account_name  = "tstate2021"
+    resource_group_name   = "rg-tfstate-eus-dev"
+    storage_account_name  = "mydomaintfstate"
     container_name        = "tstate"
     key                   = "terraform.tfstate"
   }
