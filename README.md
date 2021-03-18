@@ -190,12 +190,15 @@ terraform destoy
 # this line is imported so that backend connection is extablished in 
 the pipeline
 terraform {
-    backend "azurerm" {}
+  backend "azurerm" {
+    resource_group_name   = "tstate"
+    storage_account_name  = "tstate2021"
+    container_name        = "tstate"
+    key                   = "terraform.tfstate"
+  }
 }
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
-    subscription_id = "74d6a1ea-aaaa-bbbb-cccc-28b098c3435f"
-    skip_provider_registration = "true"
     features {}
 }
 resource "azurerm_app_service_plan" "test" {
