@@ -1,7 +1,7 @@
 # From ARM Templates To Terraform
-## A guide for ARM developers
+## A guide for ARM template developers
 
-## Samples
+## Sample code
 
 ### ARM Template
 ```json
