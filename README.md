@@ -138,10 +138,19 @@ output "storageAccounts" {
 }
 ```
 
-Variable file: dev.tfvars
+Variable file: 
+
+dev.tfvars
 
 ```bash
 StorageAccountCount=3
+```
+
+qa.tfvars
+
+```bash
+StorageAccountCount=3
+storageAccountType=GRS
 ```
 
 ## ARM and Terraform common concepts
